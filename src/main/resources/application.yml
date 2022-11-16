@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: check-book-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-add-partitions: true
+      bindings:
+        input:
+          destination: creationBookServiceDestination
+          group: creationBookServiceGroup
+          binder: kafka
+        output:
+          destination: storeBookServiceDestination
+          group: storeBookServiceGroup
+          binder: kafka
+
+server:
+  port: 8051
